@@ -2,6 +2,12 @@
 
 Static redesign of [nikteplyrestorations.com](https://nikteplyrestorations.com/) — original copy and workshop photographs, new layout and typography.
 
+## Live demo
+
+https://pdatsv.github.io/nikteply-site/
+
+Published from the `main` branch with GitHub Pages.
+
 ## Preview locally
 
 From this folder:
@@ -12,7 +18,7 @@ python -m http.server 8080
 
 Then open [http://localhost:8080/](http://localhost:8080/).
 
-Directory URLs such as `/about/` resolve to `about/index.html`. Root-relative assets (`/css/site.css`, `/public/images/…`) need this local server; opening files via `file://` will not load them.
+Directory URLs such as `/about/` resolve to `about/index.html`. Use the local server rather than `file://`.
 
 ## Pages / routes
 

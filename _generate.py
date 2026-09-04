@@ -37,12 +37,15 @@ def head(title, desc):
 <html lang="en-AU">
 <head>
   <meta charset="utf-8">
+  <script>
+    document.write('<base href="' + (/github\\.io$/i.test(location.hostname) ? '/nikteply-site/' : '/') + '">');
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>
   <meta name="description" content="{desc}">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" href="/favicon.png" sizes="256x256">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon.png" sizes="256x256">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -66,7 +69,7 @@ def head(title, desc):
       }}
     }}
   </script>
-  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="css/site.css">
 </head>
 <body class="bg-ivory text-ink antialiased">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -138,7 +141,7 @@ def footer():
     Copyright Nikolaus Teply. All rights reserved. 2026
   </div>
 </footer>
-<script src="/js/site.js" defer></script>
+<script src="js/site.js" defer></script>
 </body>
 </html>
 """
@@ -177,6 +180,15 @@ def page_hero(title, image, alt, kicker=""):
 
 
 def write(rel, html):
+    import re
+
+    def relativize(match):
+        attr, path = match.group(1), match.group(2)
+        if path == "":
+            return f'{attr}="./"'
+        return f'{attr}="{path}"'
+
+    html = re.sub(r'\b(href|src)="/(?!/)([^"]*)"', relativize, html)
     path = ROOT / rel
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(html, encoding="utf-8")
