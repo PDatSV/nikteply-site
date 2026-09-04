@@ -1,0 +1,12 @@
+# Crawl cache of the live WordPress site (not part of the redesign)
+_source/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp

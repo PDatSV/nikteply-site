@@ -1,0 +1,163 @@
+Build a complete, production-ready multi-page website that is a full visual redesign of https://nikteplyrestorations.com/
+
+MISSION
+Recreate EVERY page, heading, paragraph, service, testimonial, contact detail, and photograph from the original site. Do not invent new services, fake reviews, or stock photos. Do not drop copy. Redesign only the look, layout, typography, and interaction. The result should feel like a contemporary European conservation atelier — quiet luxury, museum-grade, warm timber and parchment — not a generic SaaS template and not a clone of the current grey WordPress Twenty Thirteen theme.
+
+FIRST ACTIONS (do these before writing UI)
+1. Fetch and inventory the live site:
+   - https://nikteplyrestorations.com/
+   - https://nikteplyrestorations.com/about/
+   - https://nikteplyrestorations.com/contact/
+   - https://nikteplyrestorations.com/services/
+   - https://nikteplyrestorations.com/services/antique-restoration/
+   - https://nikteplyrestorations.com/services/antique-repairs/
+   - https://nikteplyrestorations.com/services/antique-furniture-restoration/
+   - https://nikteplyrestorations.com/services/refinishing-old-wood-furniture/
+   - https://nikteplyrestorations.com/services/veneer-furniture-restoration/
+   - https://nikteplyrestorations.com/services/french-polishing/
+   - https://nikteplyrestorations.com/services/woodturning/
+   - https://nikteplyrestorations.com/services/furniture-colour-matching/
+   - https://nikteplyrestorations.com/testimonials/
+   - https://nikteplyrestorations.com/gallery/
+2. Download every original image into /public/images/ (logo, slider photos, before/after, gallery, service heroes). Use the original files from nikteplyrestorations.com/wp-content/uploads/ — not placeholders. Also save the logo:
+   https://nikteplyrestorations.com/wp-content/themes/nikteply/images/logo.png
+3. Write a CONTENT.md inventory listing each page, its headings, and which local image files it uses. Then implement from that inventory.
+
+STACK
+- Static multi-page site: HTML + Tailwind CSS via CDN or a tiny Vite + Tailwind setup. Prefer vanilla HTML pages if simpler; use Vite only if it speeds you up.
+- No WordPress. No page builders.
+- Semantic HTML, accessible nav, keyboard-friendly lightbox.
+- Mobile-first, elegant on a phone and on a large desktop.
+- Optional tiny JS only for: mobile menu, hero slider, gallery lightbox, smooth scroll, contact form client-side validation.
+- Contact form can be a static form that opens mailto:nikteply@gmail.com with subject/body filled, plus visible phone/email. Do not fake a backend.
+
+BRAND FACTS TO PRESERVE EXACTLY
+- Business: Nikolaus Teply Restorations
+- Person: Nick / Nikolaus Teply
+- Tagline: Restoration and conservation of antique furniture and objects of art.
+- Workshop: Suite A1, Building A, 10 Carrington Road, Marrickville NSW 2204
+  (Contact page also says Suite 1 A, ground floor of Building A — keep that wording on Contact)
+- Mobile: 0425 217 269
+- Email: nikteply@gmail.com
+- Map: https://maps.app.goo.gl/k4KDyEzhGzLdL8yH9
+- Training: traditional cabinetmaker, Garmisch-Partenkirchen, mid-1980s; 3 years full-time at the state-accredited Goering Institute of Restoration and Conservation of Wooden Objects, Munich (http://www.restaurierung-goering.de); moved to Australia 1996; worked for leading Sydney antique dealers and managed the workshop for Original Finish (http://www.originalfinish.com.au); own workshop opened St Peters 2002; now Marrickville.
+- Footer copyright can stay “Copyright Nikolaus Teply. All rights reserved.” and update the year to 2026.
+
+AESTHETIC DIRECTION
+Think: quiet museum + cabinetmaker’s studio.
+- Palette: deep walnut #3B2A1F, aged brass #B08D57, warm ivory #F6F1E8, parchment #EDE6D9, ink #1C1612, soft charcoal for body text. No neon, no purple gradients, no Inter-on-white startup look.
+- Type: a refined serif for headings (Cormorant Garamond or Fraunces) and a clean humanist sans for body (Source Sans 3 or Outfit). Generous line-height, restrained letter-spacing on small caps.
+- Layout: full-bleed photography, lots of negative space, thin brass rules, editorial grids. Hero is a large photograph with a short overlay, not a busy slider of tiny captions.
+- Motion: slow, 200–400ms fades and gentle image ken-burns only. No bounce, no confetti.
+- Cards and buttons: sharp or very slightly rounded (4–6px). Primary CTA is brass-filled “Request a consultation”; secondary is outlined “Call 0425 217 269”.
+- Photography treatment: original photos stay uncropped when possible; use dark walnut letterbox rather than stretching. Before/after pairs should be a slider or side-by-side with labels “Before” / “After”.
+- Keep the existing coat-of-arms logo. Do not redraw a cartoon logo.
+
+INFORMATION ARCHITECTURE
+Header (sticky, translucent ivory that firms up on scroll):
+  Logo + wordmark “Nikolaus Teply”
+  Nav: Home · Services ▾ · Gallery · About · Testimonials · Contact
+  Right side: phone number as a text link
+Services dropdown:
+  Antique Restoration
+  Antique Repairs
+  Antique Furniture Restoration
+  Restoring / Refinishing Old Wood Furniture
+  Veneer Furniture Restoration
+  French Polishing
+  Custom Wood Turning and Carving
+  Furniture Colour Matching
+  Overview of all services
+
+PAGES AND REQUIRED CONTENT
+
+1) HOME /
+Hero: large restored-furniture photograph from the original slider (drop-leaf table / dining suite / drinks cabinet). Headline: “Furniture Restorer Sydney”. Subhead uses the original opening paragraph:
+“At Nikolaus Teply Restorations, we are Sydney’s master furniture restorer…”
+CTA buttons: Request a consultation · View the gallery
+
+Then keep, in refined sections, all homepage copy including:
+- Sydney’s Premier Antique And Furniture Restoration Specialists
+- Preserving Historical And Financial Value
+- Comprehensive Furniture And Art Restoration Services
+- Antique Furniture Restoration And Conservation
+- French Polishing And Veneer Repair
+- Restoration Of Wooden Art, Mirrors, Frames, Sculptures, And Clocks
+- Expertise Backed By European Training
+- Traditional Restoration Techniques
+- Knowledge Of Authentic Materials And Finishes
+- What Is Restoration? / What Is Conservation? / Helping You Choose The Right Approach
+- Trusted Furniture Restoration Specialist In Sydney
+- Testimonials teaser (2 quotes)
+- Before-and-after teaser using Cambodian jewellery cabinet/box photos
+- Proven Credentials
+- Proudly Serving Sydney
+- Contact CTA
+
+Sidebar service list from the original site must appear as a refined “What we do” strip, not a grey box:
+French Polishing; Stripping and finishing with hand applied finishes; Reproducing antique finishes; Colour matching; All manner of repairs; Modern, hand applied finishes; All structural repairs; Veneer work; Hand stripping; Turning; Furniture related metalwork; On site work.
+
+2) SERVICES /services/
+Use the original “Comprehensive Restoration Services” lists in three groups:
+Restoration — Structural repairs; veneer repairs/replacements; related metalwork; hand finishing (French Polish, oil, wax); re-laying baize and leathers; turning; re-caning; colour matching.
+Conservation — Preservation of original finishes and patina; antique lacquer / Chinoiserie and gilding; surface cleaning of non-wooden objects; work to internationally recognised guidelines.
+Other — Contemporary furniture repairs; care advice; written + photographic documentation; complete refinishing; pickup and delivery by trusted removalists; custom designed fine furniture; on-site work (colour, reviving, watermark removal, cleaning, polishing, waxing); upholstery.
+Keep the quote note: estimates from photos possible, in-person viewing preferred, detailed quote before work starts.
+
+3–10) Each existing service URL must exist with the original body copy, lightly typeset but not rewritten into marketing fluff. Use the original page titles:
+- /services/antique-restoration/
+- /services/antique-repairs/
+- /services/antique-furniture-restoration/
+- /services/refinishing-old-wood-furniture/
+- /services/veneer-furniture-restoration/
+- /services/french-polishing/
+- /services/woodturning/
+- /services/furniture-colour-matching/
+If a service page is long SEO copy, keep the substance (benefits, process, Nick’s background, CTAs). You may tighten repetition but do not delete unique facts.
+
+11) ABOUT /about/
+Keep Nick’s biography verbatim in spirit and facts: Bavaria, Garmisch-Partenkirchen mid-80s, Goering Institute Munich, Australia 1996, Original Finish, own workshop St Peters 2002, belief that each piece has a story.
+
+12) GALLERY /gallery/
+Build a masonry or quiet editorial grid from every project photo on the original site, including slider images and the Cambodian jewellery cabinet before/after:
+- /wp-content/uploads/2014/06/new-slide1.webp
+- /wp-content/uploads/2014/07/new-slide2.webp
+- /wp-content/uploads/2014/07/new-slide3.webp
+- /wp-content/uploads/2024/07/homeimg-opt.webp
+- /wp-content/uploads/2014/06/Cambodian-Jewellery-box-after-restauration-800x6001.jpg
+- /wp-content/uploads/2014/06/Cambodian-Jewellery-cabinet-before-restauration-800x533.jpg
+- /wp-content/uploads/2020/12/antique-furniture-restoration-sydney.jpg
+- /wp-content/uploads/2014/07/slide1.jpg
+- /wp-content/uploads/2014/07/slide3.jpg
+- and any other images found while crawling /gallery/ and inner pages
+Lightbox on click. Caption with alt text where the original has it. Before/after grouped together.
+
+13) TESTIMONIALS /testimonials/
+Keep these four testimonials word-for-word:
+- Susan — furniture in its “home”, will recommend
+- Ruth from Newtown — wardrobe
+- Linda from Darlington — chest looks magnificent
+- Wendy and Simon from Dulwich Hill (original spelling “Dullwich Hill” — you may correct to Dulwich Hill) — dining table, chairs, chiffonier
+
+14) CONTACT /contact/
+Workshop address, mobile, email, embedded Google Map using https://maps.app.goo.gl/k4KDyEzhGzLdL8yH9
+Form fields: Name, Email, Phone, Piece / service, Message, photo-note (“attach photos by email after sending”).
+Primary actions: Call and Email buttons.
+
+FOOTER (all pages)
+Address, phone, email, service links, “European-trained restorer · Marrickville, Sydney”.
+
+QUALITY BAR
+- Lighthouse-friendly: compressed images (keep originals + reasonable srcset), lazy-load below the fold, no layout shift from the header.
+- Favicon from the original /favicon.ico
+- page titles and meta descriptions based on the originals (Home title: “Art & Furniture Restoration Sydney | Nikolaus Teply”).
+- 404 page in the same visual language.
+- README.md with how to open/preview and a page list.
+
+DO NOT
+- Do not use lorem ipsum.
+- Do not replace workshop photos with Unsplash chairs.
+- Do not add e-commerce, blog, newsletter popup, or AI-chat widget.
+- Do not copy the old grey header bar / black side gutters / cramped 2013 theme.
+
+When finished, start a local preview and print the list of generated files and routes.
